@@ -54,7 +54,7 @@ public class Labor {
 								System.out.println("all done.");
 								System.exit(0);
 							}
-							HttpGet httpReq = new HttpGet("http://" + ip + "/?" + UUID.randomUUID().toString());
+							HttpGet httpReq = new HttpGet("https://" + ip + "/?" + UUID.randomUUID().toString());
 							HttpResponse response;
 							try {
 								response = HttpConnect.execute(httpReq);
