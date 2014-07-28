@@ -92,39 +92,33 @@ public class Labor {
 	private static void putIpsQ() {
 		Random r = new Random(System.currentTimeMillis());
 		while (true) {
-			boolean oneMoreTry = false;
-			do {
-				String ipRange = com.company.constant.Constant.IPTABLE[r.nextInt(com.company.constant.Constant
-						.IPTABLELENGTH)];
-				String[] array = ipRange.split("\\.");
-				String prefix = array[0] + "." + array[1] + "." + array[2];
-				String[] range = array[3].split("-");
-				int value;
-				if (range.length != 1) {
-					int min = Integer.parseInt(range[0]);
-					int max = 0;
-					try {
-						max = Integer.parseInt(range[1]);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					value = min + r.nextInt(max - min + 1);
-				} else {
-					value = Integer.parseInt(range[0]);
-				}
+			String ipRange = com.company.constant.Constant.IPTABLE[r.nextInt(com.company.constant.Constant
+					.IPTABLELENGTH)];
+			String[] array = ipRange.split("\\.");
+			String prefix = array[0] + "." + array[1] + "." + array[2];
+			String[] range = array[3].split("-");
+			int value;
+			if (range.length != 1) {
+				int min = Integer.parseInt(range[0]);
+				int max = 0;
 				try {
-					String ip = prefix + "." + value;
-					if (!qedIp.contains(ip)) {
-						ipQ.put(ip);
-						qedIp.add(ip);
-					} else {
-						oneMoreTry = true;
-					}
-				} catch (InterruptedException e) {
+					max = Integer.parseInt(range[1]);
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				value = min + r.nextInt(max - min + 1);
+			} else {
+				value = Integer.parseInt(range[0]);
 			}
-			while (oneMoreTry);
+			try {
+				String ip = prefix + "." + value;
+				if (!qedIp.contains(ip)) {
+					ipQ.put(ip);
+					qedIp.add(ip);
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
