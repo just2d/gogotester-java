@@ -23,7 +23,6 @@
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
-			<!-- 把资源文件拷贝到jar的平级目录 -->
 			<resource>
 				<directory>src/main/resources</directory>
 				<targetPath>${project.build.directory}</targetPath>
