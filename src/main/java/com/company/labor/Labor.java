@@ -1,7 +1,9 @@
 package com.company.labor;
 
+import com.company.util.ConcurrentLinkedBlockingQueue;
 import com.company.util.HttpConnect;
 import com.company.util.PropertiesUtil;
+import com.company.util.ConcurrentLinkedBlockingQueue;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 
@@ -26,7 +28,7 @@ public class Labor {
 		}
 	});
 
-	private static LinkedBlockingQueue<String> ipQ = new LinkedBlockingQueue(300);
+	private static BlockingQueue<String> ipQ = new ConcurrentLinkedBlockingQueue<String>(300);
 	private static HashSet<String> qedIp = new HashSet();
 
 	public static void main(String[] args) throws IOException, InterruptedException {
